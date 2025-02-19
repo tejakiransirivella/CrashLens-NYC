@@ -5,6 +5,7 @@ from preprocess import PreProcess
 from visualization import Visualization
 import plotly.express as px
 from sklearn.cluster import DBSCAN
+import sys
 
 
 def preprocess_data(pre):
@@ -225,7 +226,7 @@ def total_accidents_by_vehicle_type(data,visualize,year,month):
     title = 'Vehicle type contribution for accidents in '+ months[month-1] + " " + str(year)
     visualize.draw_pie_chart(vehicle_type_counts,vehicle_type_counts.index,title)
 
-def generate_heatmap_latitude_longitude(data,visualize):
+def generate_heatmap_latitude_longitude(data):
     '''
     This function generates a heatmap of accidents based on latitude and longitude for the year 2022.
     '''
@@ -246,12 +247,13 @@ def generate_heatmap_latitude_longitude(data,visualize):
                         lon="LONGITUDE",
                         color="Cluster",
                         color_continuous_scale=px.colors.sequential.YlOrRd,
-                        zoom=8, 
+                        zoom=6.5, 
                         height=800,
                         width=800)
     fig.update_layout(mapbox_style="open-street-map")
     fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
     fig.update_traces(showlegend=False)
+    fig.write_image("results/heatmap.png")
     fig.show()
 
     
@@ -274,11 +276,11 @@ def perform_analysis(data,visualize):
     total_accidents_by_contributing_factor(data,visualize,2022,7)
     total_accidents_by_vehicle_type(data,visualize,2020,7)
     total_accidents_by_vehicle_type(data,visualize,2022,7)
-    generate_heatmap_latitude_longitude(data,visualize)
+    generate_heatmap_latitude_longitude(data)
 
 
 def main():
-    file_path = "data/crashes.csv"
+    file_path = "data/"+ sys.argv[1]
     pre = PreProcess()
     pre.read_data(file_path)
     preprocess_data(pre)

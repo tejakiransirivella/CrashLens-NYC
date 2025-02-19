@@ -20,8 +20,8 @@ class Visualization:
         plt.xticks(label_index, labels, rotation=45)  # Set month names as x-ticks with rotation
 
         plt.legend()
-
         plt.tight_layout()
+        plt.savefig(f"results/{title}.png", dpi=300, bbox_inches='tight')  
         plt.show() 
 
     def draw_single_histogram(self,x_data,y_data,xlabel,ylabel,title,legend):
@@ -37,8 +37,8 @@ class Visualization:
         plt.xticks(rotation=45) 
     
         plt.legend()
-
         plt.tight_layout()
+        plt.savefig(f"results/{title}.png", dpi=300, bbox_inches='tight')  
         plt.show()
 
     def plot_line_graph(self,x_data,y_data,xlabel,ylabel,title, max_accidents):
@@ -57,14 +57,10 @@ class Visualization:
         plt.annotate(f"({max_accidents.iloc[0]['CRASH DATE']}, {max_accidents.iloc[0]['rolling_accidents']})", xy=(max_accidents['CRASH DATE'], max_accidents['rolling_accidents']), xytext=(max_accidents['CRASH DATE'], max_accidents['rolling_accidents']+50), 
                     arrowprops=dict(facecolor='black', arrowstyle='->'), fontsize=7)
 
-       
         plt.xticks(rotation=45)
-
-       
         plt.grid(True)
-
-
         plt.tight_layout() 
+        plt.savefig(f"results/{title}.png", dpi=300, bbox_inches='tight')  
         plt.show()
     
     def draw_pie_chart(self,data,labels,title):
@@ -75,4 +71,5 @@ class Visualization:
         plt.pie(data, labels=labels, autopct='%1.1f%%', startangle=140,textprops={'fontsize': 4})
         plt.title(title )
         plt.axis('equal') 
+        plt.savefig(f"results/{title}.png", dpi=300, bbox_inches='tight')  
         plt.show()
