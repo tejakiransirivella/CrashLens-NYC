@@ -24,7 +24,7 @@ Ensure you have the following installed on your system:
 
 Simply execute `analysis.py {file_name.csv}` to generate multiple visualizations of patterns in the data. 
 
-## ** 🔍Results
+## **🔍Results**
 
 All the generated visualizations, including heatmaps, are saved in the results/ directory.
 
