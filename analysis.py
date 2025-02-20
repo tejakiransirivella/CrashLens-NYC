@@ -47,9 +47,10 @@ def total_accidents_by_month(data,visualize):
     '''
     This function visualizes the number of accidents by month for the years 2020 and 2022.
     '''
+
     brooklyn_data_2022 = data[data['Year'] == 2022]
     brooklyn_data_2020 = data[data['Year'] == 2020]
-
+    
     month_crashes_2022 = brooklyn_data_2022['Month'].value_counts().sort_index()
     month_crashes_2020 = brooklyn_data_2020['Month'].value_counts().sort_index()
     months_list = ['Jan', 'Feb', 'Mar', 'April', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec']
@@ -230,7 +231,7 @@ def generate_heatmap_latitude_longitude(data):
     '''
     This function generates a heatmap of accidents based on latitude and longitude for the year 2022.
     '''
-
+    print("Generating Heatmap")
     brooklyn_data_2022 = data[data['Year'] == 2022]
     geoData = brooklyn_data_2022.dropna(subset=['LATITUDE', 'LONGITUDE'])
     coordinates = geoData[['LATITUDE', 'LONGITUDE']]
@@ -242,7 +243,7 @@ def generate_heatmap_latitude_longitude(data):
     accident_data_with_labels = np.column_stack((coordinates, cluster_labels))
     unique_labels = np.unique(cluster_labels)
     geoData = pd.DataFrame(accident_data_with_labels, columns=['LATITUDE', 'LONGITUDE', 'Cluster'])
-    fig = px.scatter_mapbox(geoData, 
+    fig = px.scatter_map(geoData, 
                         lat="LATITUDE", 
                         lon="LONGITUDE",
                         color="Cluster",
@@ -253,7 +254,6 @@ def generate_heatmap_latitude_longitude(data):
     fig.update_layout(mapbox_style="open-street-map")
     fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
     fig.update_traces(showlegend=False)
-    fig.write_image("results/heatmap.png")
     fig.show()
 
     
@@ -261,7 +261,6 @@ def perform_analysis(data,visualize):
     '''
     This function performs the analysis by calling the respective functions for each analysis.
     '''
-    
     total_accidents_by_month(data,visualize)
     pedestrian_accidents_by_month(data,visualize)
     cyclist_accidents_by_month(data,visualize)

@@ -7,6 +7,7 @@ class Visualization:
         '''
         Draws a histogram with two sets of data side by side for comparison.
         '''
+        plt.clf()
         label_index = np.arange(len(labels))
 
         bar_width = 0.35
@@ -22,7 +23,7 @@ class Visualization:
         plt.legend()
         plt.tight_layout()
         plt.savefig(f"results/{title}.png", dpi=300, bbox_inches='tight')  
-        plt.show() 
+        plt.close()
 
     def draw_single_histogram(self,x_data,y_data,xlabel,ylabel,title,legend):
         '''
@@ -39,7 +40,7 @@ class Visualization:
         plt.legend()
         plt.tight_layout()
         plt.savefig(f"results/{title}.png", dpi=300, bbox_inches='tight')  
-        plt.show()
+        plt.close()
 
     def plot_line_graph(self,x_data,y_data,xlabel,ylabel,title, max_accidents):
         '''
@@ -60,8 +61,8 @@ class Visualization:
         plt.xticks(rotation=45)
         plt.grid(True)
         plt.tight_layout() 
-        plt.savefig(f"results/{title}.png", dpi=300, bbox_inches='tight')  
-        plt.show()
+        plt.savefig(f"results/{title}.png", dpi=300, bbox_inches='tight')
+        plt.close()
     
     def draw_pie_chart(self,data,labels,title):
         '''
@@ -71,5 +72,5 @@ class Visualization:
         plt.pie(data, labels=labels, autopct='%1.1f%%', startangle=140,textprops={'fontsize': 4})
         plt.title(title )
         plt.axis('equal') 
-        plt.savefig(f"results/{title}.png", dpi=300, bbox_inches='tight')  
-        plt.show()
+        plt.savefig(f"results/{title}.png", dpi=300, bbox_inches='tight')
+        plt.close()
