@@ -28,10 +28,10 @@ Simply execute `analysis.py {file_name.csv}` to generate multiple visualizations
 
 All the generated visualizations, including heatmaps, are saved in the results/ directory.
 
-<!-- ## 🎥 Demo 
+## 🎥 Demo 
 
 Watch the project in action! Check out the demo video:
   
-[![CrashLens NYC Demo](https://img.youtube.com/vi/WdYylw39tjM/0.jpg)](https://www.youtube.com/watch?v=WdYylw39tjM)  
+[![CrashLens NYC Demo](https://img.youtube.com/vi/N49rF5-mmL0/0.jpg)](https://youtu.be/N49rF5-mmL0)  
 
-Click the image or [this link](https://www.youtube.com/watch?v=WdYylw39tjM) to watch the demo. -->
+Click the image or [this link](https://youtu.be/N49rF5-mmL0) to watch the demo.
